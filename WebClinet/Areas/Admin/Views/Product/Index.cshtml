@@ -1,0 +1,399 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Layout.cshtml";
+}
+
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Hi, welcome back!</h4>
+                    <span class="ml-1">@ViewBag.header</span>
+                </div>
+            </div>
+            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Table</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">@ViewBag.header</a></li>
+                </ol>
+            </div>
+        </div>
+        <!-- row -->
+        <div id="tablepage"></div>
+        <div class="row" id="frominput">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Thêm mới Products</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-validation">
+                            <form class="form-valide" action="#" method="post">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="form-group row">
+                                            <input type="hidden" id="ProductID" />
+                                            <label class="col-lg-4 col-form-label" for="ProductCode">
+                                                ProductCode
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" id="ProductCode" name="ProductCode" placeholder="Nhập ProductCode">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="ProductName">
+                                                ProductName<span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" id="ProductName" name="ProductName" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="MetaTitle">
+                                                MetaTitle
+                                            </label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" id="MetaTitle" name="MetaTitle" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="Price">
+                                                Price
+                                            </label>
+                                            <div class="col-lg-8">
+                                                <input type="number" class="form-control" id="Price" name="Price" min="1" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="PromotionPrice">
+                                                PromotionPrice
+                                            </label>
+                                            <div class="col-lg-8">
+                                                <input type="number" class="form-control" id="PromotionPrice" name="PromotionPrice" min="1" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="Price">
+                                                Quantity
+                                            </label>
+                                            <div class="col-lg-8">
+                                                <input type="number" class="form-control" id="Quantity" name="Quantity" min="1" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="Warranty">
+                                                Warranty
+                                            </label>
+                                            <div class="col-lg-8">
+                                                <input type="number" class="form-control" id="Warranty" name="Warranty" min="1" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="ProductImage" class="control-label col-lg-2">Ảnh sản phẩm<span style="color:red">(*)</span></label>
+                                            <div class="col-lg-10">
+                                                <input class="form-control" type="text" id="ProductImage">
+                                                <button type="button" id="btnselectimage">Chọn ảnh</button>
+                                                <br />
+                                                <img id="imganhlogo" style="width:100%;height:250px" alt="..." class="img-thumbnail">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="Description" class="control-label col-md-2">Description</label>
+                                            <div class="col-md-10">
+                                                <textarea class="form-control" rows="6" id="Description"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="Detail" class="control-label col-lg-2">Detail</label>
+                                            <div class="col-lg-10">
+                                                <textarea class="form-control" rows="6" id="Detail"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="CategoryID">
+                                                CategoryID
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-8">
+                                                @Html.DropDownList("CategoryID", (IEnumerable<SelectListItem>)ViewBag.CategoryList, "Chọn thể loại sản phẩm", new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="Status">
+                                                Trạng thái
+                                            </label>
+                                            <div class="col-lg-8">
+                                                <input type="checkbox" class="form-control" id="Status" name="Status" checked />
+                                            </div>
+                                            <label class="col-lg-4 col-form-label" for="IncludeVAT">
+                                                IncludeVAT
+                                            </label>
+                                            <div class="col-lg-8">
+                                                <input type="checkbox" class="form-control" id="IncludeVAT" name="IncludeVAT"  />
+                                            </div>
+                                            <label class="col-lg-4 col-form-label" for="TopHot">
+                                                Top Hot
+                                            </label>
+                                            <div class="col-lg-8">
+                                                <input type="date" class="form-control" id="TopHot" name="TopHot" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-lg-12 ml-auto">
+                                            <button type="button" onclick="save()" class="btn btn-primary">Lưu lại</button>
+                                            <button type="button" onclick="huy()" class="btn btn-danger">Hủy bỏ</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section scripts {
+    <script type="text/javascript">
+        var number;
+        $(function () {
+            load(1);
+            huy();
+            Setup();
+            var stri = makeid(5);
+            $("#ProductCode").val(stri);
+        });
+        function page(num) {
+            number = num;
+            load(num);
+        };
+        function Setup() {
+            var editor = CKEDITOR.replace('Detail', {
+                customConfig: '/Areas/Admin/ckeditor/config.js',
+            });
+           
+            $('#btnselectimage').click(function () {
+                var finder = new CKFinder();
+                finder.selectActionFunction = function (fileUrl) {
+                    $('#ProductImage').val(fileUrl);
+                    document.getElementById('imganhlogo').src = fileUrl;
+                };
+                finder.popup();
+            });
+        };
+        $('#ProductName').change(function () {
+            $('#MetaTitle').val(removeVietnameseTones($('#ProductName').val()));
+        })
+        function Reset() {
+            $('#ProductCode').val("");
+            $('#ProductName').val("");
+            $('#MetaTitle').val("");
+            $('#Description').val("");
+            $('#ProductImage').val("");
+           /* $('#MoreImages').val("");*/
+            $('#Price').val("");
+            $('#PromotionPrice').val("");
+            $('#Quantity').val("");
+            $('#CategoryID').val("");
+            $('#Detail').val("");
+            $('#Warranty').val("");
+
+            $('#TopHot').val("");
+            $('#Status').removeAttr('checked');
+            $('#IncludeVAT').removeAttr('checked');
+
+            $('#ProductID').val('-1');
+            $('#imganhlogo').attr('src', '');
+
+        };
+        var Bool = false; var BoolCheck = false;
+        function get() {
+
+            var Obj = {
+                ProductID: $("#ProductID").val(),
+                ProductCode: $("#ProductCode").val(),
+                ProductName: $("#ProductName").val(),
+                MetaTitle: $("#MetaTitle").val(),
+                ProductImage: $("#ProductImage").val(),
+                MoreImages: null,
+                Price: $("#Price").val(),
+                PromotionPrice: $("#PromotionPrice").val(),
+                Quantity: $("#Quantity").val(),
+                CategoryID: $("#CategoryID").val(),
+                Detail: CKEDITOR.instances['Detail'].getData(),
+                Warranty: $("#Warranty").val(),
+                TopHot: $("#TopHot").val(),
+                Status: Bool,
+                IncludeVAT: BoolCheck,
+                Description: $('#Description').val(),
+                CreatedDate: new Date(),
+                CreatedBy: 'admin',
+                ModifiedDate: null,
+                ModifiedBy: null,
+                MetaKeywords: null,
+                MetaDescriptions: null,
+                ViewCounts: 0
+            }
+            return Obj;
+        };
+        function set(Obj) {
+            $("#ProductID").val(Obj.ProductID);
+            $("#ProductCode").val(Obj.ProductCode);
+            $("#ProductName").val(Obj.ProductName);
+            $("#MetaTitle").val(Obj.MetaTitle);
+            $("#ProductImage").val(Obj.ProductImage);
+            //MoreImages: null;
+            $("#Price").val(Obj.Price);
+            $("#PromotionPrice").val(Obj.PromotionPrice);
+            $("#Quantity").val(Obj.Quantity);
+            $("#CategoryID").val(Obj.CategoryID);
+            $("#Detail").val(Obj.Detail);
+            CKEDITOR.instances['Detail'].setData(Obj.Detail),
+            $("#Warranty").val(Obj.Warranty);
+            $("#TopHot").val(TopHot);
+            $("#Status").prop('checked', Obj.Status);
+            $("#IncludeVAT").prop('checked', Obj.IncludeVAT);
+            $('#imganhlogo').attr('src', Obj.ProductImage);
+           // TopHot: new Date();
+            $('#Description').val(Obj.Description);
+        };
+
+        function load(num) {
+            $.ajax({
+                url: '@Url.Action("Datatable", "Product")',
+                type: 'GET',
+                data: { page: num },
+                async: true,
+            }).done(function (data) {
+                $('#tablepage').html(data);
+            });
+        };
+        function add() {
+                $("#tablepage").css("display", "none");
+            $("#frominput").css("display", "block");
+            Reset();
+        };
+        function huy() {
+            $("#tablepage").css("display", "block");
+            $("#frominput").css("display", "none");
+            Reset();
+        };
+        function save() {
+            number;
+            var Obj = get();
+            $.ajax({
+                    url: '@Url.Action("Add", "Product")',
+                    dataType: "json",
+                    type: "POST",
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({ NewView: Obj }),
+                    async: true,
+                    processData: false,
+                    cache: false,
+                    success: function (data) {
+                        if (data.code == 200) {
+                            toastr.success("Thêm mới thành công!");
+                        } else {
+                            toastr.success("Cập nhật thành công!");
+                        }
+                        huy();
+                        load(number);
+                    },
+                    error: function (xhr) {
+                       alert(xhr);
+                    }
+                });
+        };
+        function edit(id, num) {
+            debugger
+            number = num;
+            $.ajax({
+                    url: '@Url.Action("GetById", "Product")',
+                    dataType: "json",
+                    type: "POST",
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({ id: id }),
+                    async: true,
+                    processData: false,
+                    cache: false,
+                    success: function (data) {
+                        if (data.code == 200) {
+                            set(data.Data);
+                            $("#tablepage").css("display", "none");
+                            $("#frominput").css("display", "block");
+                        }
+                    },
+                    error: function (xhr) {
+                        alert(xhr);
+                    }
+                });
+        };
+        function Del(id, num) {
+            Swal.fire({
+                title: 'Bạn chắn chắn?',
+                text: "Xóa bỏ dòng dữ liệu này!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Thực thi!',
+                cancelButtonText: 'Bỏ qua!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                    url: '@Url.Action("Delete", "Product")',
+                    dataType: "json",
+                    type: "POST",
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({ id: id }),
+                    async: true,
+                    processData: false,
+                    cache: false,
+                    success: function (data) {
+                        if (data.code == 200) {
+                            huy();
+                            load(num);
+                            Swal.fire(
+                                'Xóa!',
+                                'Đã xóa bỏ thành công.',
+                                'success'
+                            )
+                        }
+                    },
+                    error: function (xhr) {
+                        alert(xhr);
+                    }
+                });
+                }
+            })
+        };
+        $("#Status").change(function () {
+            var value = $(this).val();
+            if ($(this).is(":checked")) {
+                Bool = true;
+            }
+            else {
+                Bool = false;
+            }
+        });
+        $("#IncludeVAT").change(function () {
+            var value = $(this).val();
+            if ($(this).is(":checked")) {
+                BoolCheck = true;
+            }
+            else {
+                BoolCheck = false;
+            }
+        });
+    </script>
+}
