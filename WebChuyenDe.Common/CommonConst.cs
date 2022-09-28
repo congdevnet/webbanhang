@@ -16,7 +16,7 @@ namespace WebChuyenDe.Common
                     ///Admin/MenuType/Index
                     new WevSettingUrl(){Id=1, Icon=@"icon", Class=null, Link=null, Name="Bảng điều khiển" },
                     new WevSettingUrl(){Id=2, Icon=@"icon icon-single-04", Class=null, Link="/", Name="Danh sách" },
-                    //new WevSettingUrl(){Id=3, Icon=@"icon icon-app-store", Class=null, Link=@"/Admin/Menu/Index", Name="Menu" },
+                    new WevSettingUrl(){Id=3, Icon=@"icon icon-app-store", Class=null, Link=@"/Admin/Menu/Index", Name="Menu" },
                     new WevSettingUrl(){Id=1, Icon=@"icon icon-chart-bar-33", Class=null, Link=@"/Admin/MenuType/Index", Name="Loại Menu" },
                     new WevSettingUrl(){Id=5, Icon=@"icon icon-world-2", Class=null, Link=@"/Admin/NewCategory/Index", Name="Loại tin tức" },
                     new WevSettingUrl(){Id=6, Icon=@"icon icon-plug", Class=null, Link=@"/Admin/New/Index", Name="Tin tức" },

@@ -5,7 +5,7 @@ using WebChuyenDen.Interface;
 
 namespace WebClinet.Areas.Admin.Controllers
 {
-    public class MenuTypeController : Controller
+    public class MenuTypeController : BaseController
     {
         private readonly IMenuTypeService _MenuTypeService;
 

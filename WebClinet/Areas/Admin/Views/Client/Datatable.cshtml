@@ -1,0 +1,121 @@
+﻿@model IEnumerable<WebChuyenDe.Data.ViewModel.OrderViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    int page = (int)ViewBag.Page;
+    int totalpage = (int)ViewBag.TotalPage;
+}
+<style scoped>
+    #tablepage {
+        display: block;
+    }
+
+    #frominput {
+        display: none;
+    }
+
+    .btnright {
+        float: right;
+    }
+
+        .btnright::after {
+            clear: right;
+        }
+</style>
+
+<div class="row" id="tablepage">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">
+                    Bảng dữ liệu khách hàng
+                </h4>
+                @*<div class="btnright">
+                        <button onclick="add()" class="btn btn-primary">Thêm mới</button>
+                    </div>*@
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example" class="display table table-bordered table-hover" style="width: 100%;color:black">
+                        <thead>
+                            <tr class="text-center">
+                                <th>Stt</th>
+                                <th>Tên khách hàng</th>
+                                <th>Địa chỉ</th>
+                                <th>SĐT</th>
+                                <th>Email</th>
+                                <th>Ngày mua</th>
+                                <th>Chức năng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.ShipName</td>
+                                    <td>@item.ShipAddress</td>
+                                    <td>@item.ShipMobile</td>
+                                    <td>@item.ShipEmail</td>
+                                    <td>@item.CreatedDate.Value.ToString("dd/MM/yyyy")</td>
+
+                                    <td class="text-center">
+                                        @if (!item.Status.Value)
+                                        {
+                                            <a style="width:250px;height:250px" href="javascript:void(0)" onclick="Duyet(@item.Id,@page)" title="Duyệt">
+                                                <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                                            </a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end">
+                        @if (page == 1)
+                        {
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Trước</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="#" onclick="page(@page-1)" tabindex="-1">Trước</a>
+                            </li>
+                        }
+                        @for (int i = 1; i <= totalpage; i++)
+                        {
+                            if (page == i)
+                            {
+                                <li class="page-item active"><a class="page-link" onclick="page(@i)" href="#">@i</a></li>
+                            }
+                            else
+                            {
+                                <li class="page-item "><a class="page-link" onclick="page(@i)" href="#">@i</a></li>
+                            }
+                        }
+                        @if (page == totalpage)
+                        {
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Sau</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="#" onclick="page(@page+1)" tabindex="-1">Sau</a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

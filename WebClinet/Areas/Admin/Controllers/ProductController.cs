@@ -9,7 +9,7 @@ using WebChuyenDen.Interface;
 
 namespace WebClinet.Areas.Admin.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         private readonly IProductService _NewService;
         private readonly IProductCategoryService _productCategoryService;

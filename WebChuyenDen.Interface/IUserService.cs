@@ -27,5 +27,6 @@ namespace WebChuyenDen.Interface
         Task Delete(int key);
 
         Task<bool> Contain(params Expression<Func<UserViewModel, bool>>[] predicate);
+        Task<bool> Login(UserLoginViewModel userLoginView);
     }
 }

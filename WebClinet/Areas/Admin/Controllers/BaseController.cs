@@ -10,9 +10,9 @@ namespace WebClinet.Areas.Admin.Controllers
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             UserLoginViewModel userLoginViewModel = (UserLoginViewModel)Session[CommonConst.SessionUser];
-            if (userLoginViewModel.Equals(string.Empty))
+            if (userLoginViewModel==null)
             {
-                var url = new RouteValueDictionary(new { controller = "Loginadmin", action = "Login", Area = "Admin" });
+                var url = new RouteValueDictionary(new { controller = "Login", action = "Index", Area = "Admin" });
                 filterContext.Result = new RedirectToRouteResult(url);
             }
             base.OnActionExecuting(filterContext);

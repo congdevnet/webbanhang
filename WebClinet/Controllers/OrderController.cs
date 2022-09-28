@@ -99,15 +99,8 @@ namespace WebClinet.Controllers
                 // Giu gmail //
                 string content = System.IO.File.ReadAllText(Server.MapPath("~/Temple/gmail.html"));
                 content = content.Replace("{{hello}}", "aloalaolaoaloalo");
-                var kt =  _emailService.Send(orderView.ShipEmail, "Cảm ơn bạn", content);
-                if (kt)
-                {
-
-                }
-                else
-                {
-
-                }    
+                _emailService.Send(orderView.ShipEmail, "Cảm ơn bạn", content);
+                
                 return Json(new { code = 200}, JsonRequestBehavior.AllowGet);
             }
         }

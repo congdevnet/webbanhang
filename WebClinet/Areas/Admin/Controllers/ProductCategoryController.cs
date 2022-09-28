@@ -5,7 +5,7 @@ using WebChuyenDen.Interface;
 
 namespace WebClinet.Areas.Admin.Controllers
 {
-    public class ProductCategoryController : Controller
+    public class ProductCategoryController : BaseController
     {
         private readonly IProductCategoryService _NewService;
 

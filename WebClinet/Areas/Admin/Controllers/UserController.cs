@@ -5,7 +5,7 @@ using WebChuyenDen.Interface;
 
 namespace WebClinet.Areas.Admin.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private readonly IUserService _NewService;
 

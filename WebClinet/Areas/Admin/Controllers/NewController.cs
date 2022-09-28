@@ -9,7 +9,7 @@ using WebChuyenDen.Interface;
 
 namespace WebClinet.Areas.Admin.Controllers
 {
-    public class NewController : Controller
+    public class NewController : BaseController
     {
         private readonly INewService _NewService;
 

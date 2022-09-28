@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WebChuyenDe.Data.ViewModel
 {
-    public  class UserLoginViewModel
+    public class UserLoginViewModel
     {
-        public int UserID { get; set; }
+        [Required]
+        [StringLength(256, MinimumLength = 3)]
         public string Username { get; set; }
+
+        [Required]
+        [StringLength(256, MinimumLength = 3)]
         public string Password { get; set; }
     }
 }

@@ -86,6 +86,14 @@ namespace WebChuyenDe.Service
             return Mapper.Map<User, UserViewModel>(data);
         }
 
+        public async Task<bool> Login(UserLoginViewModel userLoginView)
+        {
+          return await  _UserRepository.Getall().Project()
+                .To<UserLoginViewModel>().Where(
+              x=>x.Username==userLoginView.Username 
+              && x.Password==userLoginView.Password).AnyAsync();
+        }
+
         public async Task Update(UserViewModel dto)
         {
             var data = _UserRepository.FindT(dto.UserID);

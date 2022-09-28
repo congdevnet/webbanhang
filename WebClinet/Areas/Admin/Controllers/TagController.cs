@@ -9,7 +9,7 @@ using WebChuyenDen.Interface;
 
 namespace WebClinet.Areas.Admin.Controllers
 {
-    public class TagController : Controller
+    public class TagController : BaseController
     {
         // GET: Admin/Tag
         private readonly ITagService _NewService;

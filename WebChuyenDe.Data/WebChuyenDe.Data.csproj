@@ -129,6 +129,7 @@
     <Compile Include="ViewModel\MenuVm.cs" />
     <Compile Include="ViewModel\NewCategoryViewModel.cs" />
     <Compile Include="ViewModel\NewViewModel.cs" />
+    <Compile Include="ViewModel\OderViewDetail.cs" />
     <Compile Include="ViewModel\OrderDetailViewModel.cs" />
     <Compile Include="ViewModel\OrderDetailVm.cs" />
     <Compile Include="ViewModel\OrderTemporaryViewModel.cs" />
